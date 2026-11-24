@@ -530,58 +530,65 @@
             }
         }
 
-        async function startQrCamera() {
-            const $status = $('#qr-scanner-status');
-            $status.removeClass('alert-warning alert-danger alert-success').addClass('alert-info').text('Starting camera...');
+async function startQrCamera() {
+    const $status = $('#qr-scanner-status');
+    $status.removeClass('alert-warning alert-danger alert-success').addClass('alert-info').text('Starting camera...');
 
-            if (typeof Html5Qrcode === 'undefined') {
-                $status.removeClass('alert-info').addClass('alert-danger')
-                    .text('Error: html5-qrcode.min.js is not loaded. Ensure it is in the same repository folder as index.html.');
-                return;
-            }
+    if (typeof Html5Qrcode === 'undefined') {
+        $status.removeClass('alert-info').addClass('alert-danger')
+            .text('Error: html5-qrcode.min.js is not loaded. Ensure it is in the same repository folder as index.html.');
+        return;
+    }
 
-            try {
-                if (!html5QrCode) {
-                    html5QrCode = new Html5Qrcode('qr-reader-div', {
-                        experimentalFeatures: { useBarCodeDetectorIfSupported: true }
-                    });
-                }
-
-                if (html5QrCode.isScanning) {
-                    return;
-                }
-
-                await html5QrCode.start(
-                    { facingMode: 'environment' },
-                    {
-                        fps: 15,
-                        qrbox: (viewfinderWidth, viewfinderHeight) => {
-                            const size = Math.floor(Math.min(viewfinderWidth, viewfinderHeight) * 0.8);
-                            return { width: size, height: size };
-                        },
-                        videoConstraints: {
-                            facingMode: 'environment',
-                            width: { ideal: 1280 },
-                            height: { ideal: 720 }
-                        }
-                    },
-                    (decodedText) => {
-                        $status.removeClass('alert-warning alert-danger alert-info').addClass('alert-success')
-                            .text('QR detected! Loading guest...');
-                        handleQrScanResult(decodedText);
-                    },
-                    () => {}
-                );
-
-                $status.text('Point camera at the guest QR code...');
-            } catch (err) {
-                const errName = (err && err.name) ? err.name : 'CameraError';
-                const errMsg = (err && err.message) ? err.message : String(err);
-                $status.removeClass('alert-info').addClass('alert-warning')
-                    .text('Camera error (' + errName + ': ' + errMsg + '). Use the handheld scanner input below.');
-            }
+    try {
+        if (!html5QrCode) {
+            html5QrCode = new Html5Qrcode('qr-reader-div', {
+                experimentalFeatures: { useBarCodeDetectorIfSupported: true }
+            });
         }
 
+        if (html5QrCode.isScanning) {
+            return;
+        }
+
+        // Prefer an explicit rear camera ID when available on multi-lens phones
+        let cameraConfig = { facingMode: 'environment' };
+        try {
+            const devices = await Html5Qrcode.getCameras();
+            const backCam = devices.find(d => /back|rear|environment/i.test(d.label));
+            if (backCam) {
+                cameraConfig = backCam.id;
+            }
+        } catch (e) {}
+
+        await html5QrCode.start(
+            cameraConfig,
+            {
+                fps: 20,
+                disableFlip: true,
+                videoConstraints: {
+                    facingMode: 'environment',
+                    width: { ideal: 1920 },
+                    height: { ideal: 1080 },
+                    advanced: [{ focusMode: 'continuous' }]
+                }
+            },
+            (decodedText) => {
+                $status.removeClass('alert-warning alert-danger alert-info').addClass('alert-success')
+                    .text('QR detected! Loading guest...');
+                handleQrScanResult(decodedText);
+            },
+            () => {}
+        );
+
+        $status.text('Hold QR code 20-30cm from camera...');
+    } catch (err) {
+        const errName = (err && err.name) ? err.name : 'CameraError';
+        const errMsg = (err && err.message) ? err.message : String(err);
+        $status.removeClass('alert-info').addClass('alert-warning')
+            .text('Camera error (' + errName + ': ' + errMsg + '). Use the handheld scanner input below.');
+    }
+}
         function stopQrCamera() {
             if (html5QrCode && html5QrCode.isScanning) {
                 html5QrCode.stop().then(() => {
