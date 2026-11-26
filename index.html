@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Radha Kalyanam Mahotsav UK 2026</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
     <script src="html5-qrcode.min.js"></script>
-
     <style>
-        html, body {
-            overflow-x: hidden;
-        }
+        html, body { overflow-x: hidden; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #f8f9fa;
@@ -22,15 +18,11 @@
             min-height: 100dvh;
             padding: env(safe-area-inset-top) env(safe-area-inset-right) 4rem env(safe-area-inset-left);
         }
-        .ui-widget {
-            font-family: inherit !important;
-            font-size: 1rem !important;
-        }
+        .ui-widget { font-family: inherit !important; font-size: 1rem !important; }
         input.form-control, textarea.form-control, button.btn {
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
         }
-
         /* Landing Cards */
         .day-card {
             cursor: pointer;
@@ -42,10 +34,11 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             background-color: #f8f9fa;
         }
-        .day-card:active {
-            transform: scale(0.98);
+        .day-card:active { transform: scale(0.98); }
+        .count-link {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
-
         /* Tabs */
         #pre-registered-content { background-color: #FAF0E6; }
         #new-registration-content { background-color: #F0F8FF; }
@@ -69,7 +62,6 @@
             border-top: none;
             border-radius: 0 0 .25rem .25rem;
         }
-
         /* Autocomplete */
         .ui-autocomplete {
             max-height: 55vh;
@@ -80,11 +72,7 @@
             border-radius: 0.375rem;
             box-sizing: border-box;
         }
-        .ui-autocomplete .ui-menu-item-wrapper {
-            padding: 0 !important;
-            border-bottom: 1px solid #eee;
-        }
-
+        .ui-autocomplete .ui-menu-item-wrapper { padding: 0 !important; border-bottom: 1px solid #eee; }
         /* Touch Steppers */
         .btn-plus, .btn-minus {
             min-width: 56px;
@@ -93,9 +81,7 @@
             font-weight: bold;
             flex-shrink: 0;
         }
-        .stepper-group {
-            flex-wrap: nowrap !important;
-        }
+        .stepper-group { flex-wrap: nowrap !important; }
         .stepper-group input[type="number"] {
             min-width: 0;
             padding-left: 0.25rem;
@@ -108,7 +94,6 @@
             -webkit-appearance: none;
             margin: 0;
         }
-
         /* Camera Viewfinder Container */
         #qr-reader-div {
             width: 100%;
@@ -117,58 +102,72 @@
             border-radius: 0.375rem;
             overflow: hidden;
         }
-
         @media (max-width: 575.98px) {
             #title { font-size: 1.25rem; }
-            #back-to-days-btn {
-                padding: 0.5rem 0.75rem;
-                font-size: 1rem;
-                min-height: 44px;
-            }
-            #myTab .nav-link {
-                font-size: 1rem;
-                padding: 0.85rem 0.5rem;
-            }
-            .btn-plus, .btn-minus {
-                min-width: 52px;
-                min-height: 52px;
-            }
-            #check-in-btn, #cancel-checkin-btn, #complete-reg-btn, #cancel-new-reg-btn {
-                font-size: 1.15rem !important;
-            }
+            #back-to-days-btn { padding: 0.5rem 0.75rem; font-size: 1rem; min-height: 44px; }
+            #myTab .nav-link { font-size: 1rem; padding: 0.85rem 0.5rem; }
+            .btn-plus, .btn-minus { min-width: 52px; min-height: 52px; }
+            #check-in-btn, #cancel-checkin-btn, #complete-reg-btn, #cancel-new-reg-btn { font-size: 1.15rem !important; }
         }
     </style>
 </head>
 <body>
-
     <!-- VIEW 1: DAY SELECTION LANDING -->
     <div id="landing-view" class="container py-4 my-auto">
         <div class="text-center mb-4 px-2">
             <h1 class="h3 fw-bold text-dark">Radha Kalyanam Mahotsav UK 2026</h1>
         </div>
         <div class="row g-3 g-md-4 justify-content-center">
-            <div class="col-12 col-sm-10 col-md-4">
-                <div class="card day-card border-primary border-2 shadow-lg p-3 p-md-4 h-100" data-day="1">
+            <div class="col-12 col-sm-10 col-md-4 d-flex flex-column">
+                <div class="card day-card border-primary border-2 shadow-lg p-3 p-md-4 flex-grow-1" data-day="1">
                     <div class="card-body text-center py-3 py-md-4">
                         <h2 class="card-title display-6 fw-bold text-primary mb-2 mb-md-3">Day 1</h2>
                         <p class="card-text fs-5 fw-bold text-dark mb-0">Friday 27 Nov 2026</p>
                     </div>
                 </div>
+                <div class="text-center mt-2">
+                    <a href="#" class="btn btn-link fw-semibold text-primary text-decoration-none count-link" data-day="1">View Day 1 Count</a>
+                </div>
             </div>
-            <div class="col-12 col-sm-10 col-md-4">
-                <div class="card day-card border-success border-2 shadow-lg p-3 p-md-4 h-100" data-day="2">
+            <div class="col-12 col-sm-10 col-md-4 d-flex flex-column">
+                <div class="card day-card border-success border-2 shadow-lg p-3 p-md-4 flex-grow-1" data-day="2">
                     <div class="card-body text-center py-3 py-md-4">
                         <h2 class="card-title display-6 fw-bold text-success mb-2 mb-md-3">Day 2</h2>
                         <p class="card-text fs-5 fw-bold text-dark mb-0">Saturday 28 Nov 2026</p>
                     </div>
                 </div>
+                <div class="text-center mt-2">
+                    <a href="#" class="btn btn-link fw-semibold text-success text-decoration-none count-link" data-day="2">View Day 2 Count</a>
+                </div>
             </div>
-            <div class="col-12 col-sm-10 col-md-4">
-                <div class="card day-card border-info border-2 shadow-lg p-3 p-md-4 h-100" data-day="3">
+            <div class="col-12 col-sm-10 col-md-4 d-flex flex-column">
+                <div class="card day-card border-info border-2 shadow-lg p-3 p-md-4 flex-grow-1" data-day="3">
                     <div class="card-body text-center py-3 py-md-4">
                         <h2 class="card-title display-6 fw-bold text-info mb-2 mb-md-3">Day 3</h2>
                         <p class="card-text fs-5 fw-bold text-dark mb-0">Sunday 29 Nov 2026</p>
                     </div>
+                </div>
+                <div class="text-center mt-2">
+                    <a href="#" class="btn btn-link fw-semibold text-info text-decoration-none count-link" data-day="3">View Day 3 Count</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day Count Modal -->
+    <div class="modal fade" id="githubDayCountModal" tabindex="-1" aria-labelledby="githubDayCountModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="githubDayCountModalLabel">Day Attendance Count</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4" id="githubDayCountModalBody">
+                    <!-- Dynamic count content -->
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-primary" id="refresh-github-count-btn">Refresh</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -180,7 +179,6 @@
             <h1 class="h2 fw-bold text-dark mb-0" id="title">Radha Madhava Kalyanam 2026</h1>
             <button type="button" id="back-to-days-btn" class="btn btn-outline-secondary btn-lg flex-shrink-0">&larr; Back</button>
         </div>
-
         <div class="card shadow-lg">
             <div class="card-header p-0">
                 <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
@@ -192,7 +190,6 @@
                     </li>
                 </ul>
             </div>
-
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active p-3 p-md-4" id="pre-registered-content" role="tabpanel">
                     <div class="mb-3 mb-md-4">
@@ -202,12 +199,11 @@
                                 <input type="text" id="guest-search" class="form-control" placeholder="Start typing or scan QR..." autocomplete="off">
                                 <button class="btn btn-outline-secondary flex-shrink-0" type="button" id="clear-search-btn" aria-label="Clear search" style="min-width: 56px;">&times;</button>
                             </div>
-                            <button type="button" id="scan-qr-btn" class="btn btn-primary btn-lg fw-bold flex-shrink-0 px-4 btn-success" style="min-height: 52px;">
+                            <button type="button" id="scan-qr-btn" class="btn btn-success btn-lg fw-bold flex-shrink-0 px-4" style="min-height: 52px;">
                                 Scan QR using mobile camera
                             </button>
                         </div>
                     </div>
-
                     <div id="selected-user-details" class="d-none p-3 p-md-4 mt-3 mt-md-4 border border-info rounded-3 bg-light shadow-sm">
                         <div class="row g-2 g-md-3" id="user-info"></div>
                         <div class="mt-4 pt-3 border-top d-flex flex-column-reverse flex-sm-row gap-2 gap-sm-3">
@@ -215,12 +211,10 @@
                             <button id="check-in-btn" class="btn btn-success btn-lg flex-grow-1 py-3 fs-4 fw-bold">Add</button>
                         </div>
                     </div>
-
                     <div id="status-alert" class="alert alert-info mt-3 mt-md-4 mb-0" role="alert">
                         <h4 id="data-status" class="alert-heading fs-6 mb-0">Ready</h4>
                     </div>
                 </div>
-
                 <div class="tab-pane fade p-3 p-md-4" id="new-registration-content" role="tabpanel">
                     <form id="new-registration-form" class="vstack gap-3">
                         <div class="row g-3">
@@ -233,7 +227,6 @@
                                 <input type="text" id="new-lname" class="form-control form-control-lg" autocomplete="family-name" required>
                             </div>
                         </div>
-
                         <div class="row g-3">
                             <div class="col-12 col-md-5">
                                 <label for="new-email" class="form-label">Email Address</label>
@@ -248,7 +241,6 @@
                                 <input type="text" id="new-postcode" class="form-control form-control-lg" placeholder="(Optional)" autocomplete="postal-code">
                             </div>
                         </div>
-
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">
                                 <label class="form-label">Number of Adults</label>
@@ -267,7 +259,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="d-flex flex-column-reverse flex-sm-row gap-2 gap-sm-3 mt-3 mt-md-4">
                             <button type="button" id="cancel-new-reg-btn" class="btn btn-outline-secondary btn-lg py-3 fs-4 fw-bold" style="min-width: 120px;">Cancel</button>
                             <button type="submit" class="btn btn-primary btn-lg flex-grow-1 py-3 fs-4 fw-bold" id="complete-reg-btn">Register & Check-in</button>
@@ -318,27 +309,77 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyRmexoPrZWhyIawUrCoBii9mQzWLZNB3VAQBexJO-AQDj7ycizceHd9Lj-sIjcVETT/exec';
-
+        const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbwVX0hT-YKqZE10JY4stnqrqXUebq19hO3ZKcUHJiUztZwmqpKW1s34JQyK7n_1_kbLcg/exec';
         let currentDayNumber = 1;
+        let activeCountDay = 1;
         window.masterData = [];
         window.pendingCheckins = [];
         window.selectedGuest = null;
-
         let loadingModal;
         let qrScannerModal;
+        let githubDayCountModal;
         let html5QrCode = null;
         let handheldScanTimer = null;
         let searchScanBuffer = '';
         let searchScanTimer = null;
         let syncIntervalId = null;
         const SCAN_BUFFER_MS = 120;
+        const dayMap = { 1: 'Friday: 27th Nov 2026', 2: 'Saturday: 28th Nov 2026', 3: 'Sunday: 29th Nov 2026' };
 
-        const dayMap = {
-            1: 'Friday: 27th Nov 2026',
-            2: 'Saturday: 28th Nov 2026',
-            3: 'Sunday: 29th Nov 2026'
-        };
+        async function loadGithubDayCount(day) {
+            activeCountDay = Number(day) || 1;
+            const $modalTitle = $('#githubDayCountModalLabel');
+            const $modalBody = $('#githubDayCountModalBody');
+            const $refreshBtn = $('#refresh-github-count-btn');
+
+            $modalTitle.text('Day ' + activeCountDay + (dayMap[activeCountDay] ? ' — ' + dayMap[activeCountDay] : ''));
+            $modalBody.html(
+                '<div class="spinner-border text-primary my-3" role="status">' +
+                '<span class="visually-hidden">Loading...</span>' +
+                '</div>' +
+                '<p class="text-muted mb-0">Loading Day ' + activeCountDay + ' attendance count...</p>'
+            );
+            $refreshBtn.prop('disabled', true);
+
+            try {
+                const response = await fetch(GAS_API_URL + '?action=getDayCount&day=' + activeCountDay);
+                const result = await response.json();
+                if (result.status !== 'success' || !result.data) {
+                    throw new Error(result.message || 'Failed to load day count.');
+                }
+                const counts = result.data;
+                $modalBody.html(
+                    `<div class="display-4 fw-bold text-dark mb-2">${counts.total}</div>` +
+                    `<div class="text-muted fw-medium mb-4">Total Checked-In Guests</div>` +
+                    `<div class="row g-2">` +
+                        `<div class="col-4">` +
+                            `<div class="p-2 border rounded bg-light">` +
+                                `<div class="fs-4 fw-bold text-primary">${counts.adults}</div>` +
+                                `<small class="text-muted">Adults</small>` +
+                            `</div>` +
+                        `</div>` +
+                        `<div class="col-4">` +
+                            `<div class="p-2 border rounded bg-light">` +
+                                `<div class="fs-4 fw-bold text-success">${counts.children}</div>` +
+                                `<small class="text-muted">Children</small>` +
+                            `</div>` +
+                        `</div>` +
+                        `<div class="col-4">` +
+                            `<div class="p-2 border rounded bg-light">` +
+                                `<div class="fs-4 fw-bold text-secondary">${counts.entries}</div>` +
+                                `<small class="text-muted">Check-ins</small>` +
+                            `</div>` +
+                        `</div>` +
+                    `</div>`
+                );
+            } catch (err) {
+                $modalBody.html(
+                    `<div class="alert alert-danger mb-0">Error loading count: ${$('<div>').text(err.message).html()}</div>`
+                );
+            } finally {
+                $refreshBtn.prop('disabled', false);
+            }
+        }
 
         async function selectDay(day) {
             currentDayNumber = Number(day) || 1;
@@ -348,8 +389,8 @@
             $('#selected-user-details').addClass('d-none').hide();
             $('#guest-search').val('');
             searchScanBuffer = '';
-
             loadingModal.show();
+
             try {
                 const response = await fetch(GAS_API_URL + '?action=getMasterData&day=' + currentDayNumber);
                 const result = await response.json();
@@ -375,12 +416,7 @@
             if (!text) return false;
             if (/thank\s*you\s*$/i.test(text)) return true;
             if (text.startsWith('{') && text.endsWith('}')) {
-                try {
-                    JSON.parse(text);
-                    return true;
-                } catch (e) {
-                    return false;
-                }
+                try { JSON.parse(text); return true; } catch (e) { return false; }
             }
             return false;
         }
@@ -397,25 +433,17 @@
         }
 
         function flushSearchScanBuffer() {
-            if (searchScanTimer) {
-                clearTimeout(searchScanTimer);
-                searchScanTimer = null;
-            }
+            if (searchScanTimer) { clearTimeout(searchScanTimer); searchScanTimer = null; }
             const trailing = $('#guest-search').val();
             const fullPayload = (searchScanBuffer + (trailing || '')).replace(/\r\n?/g, '\n').trim();
             searchScanBuffer = '';
-
             if (!fullPayload) return;
-
             $('#guest-search').val('').autocomplete('close');
             handleQrScanResult(fullPayload);
         }
 
         function flushHandheldQrInput() {
-            if (handheldScanTimer) {
-                clearTimeout(handheldScanTimer);
-                handheldScanTimer = null;
-            }
+            if (handheldScanTimer) { clearTimeout(handheldScanTimer); handheldScanTimer = null; }
             const $input = $('#handheld-qr-input');
             const val = $input.val().replace(/\r\n?/g, '\n').trim();
             if (val && (val.includes('@') || val.startsWith('{') || /\b(id|email)\s*[:=]/i.test(val) || /day\s*[123]/i.test(val))) {
@@ -493,15 +521,11 @@
         function handleQrScanResult(rawText) {
             const trimmed = String(rawText || '').trim();
             if (!trimmed) return;
-
             stopQrCamera();
             qrScannerModal.hide();
 
             const parsed = parseQrPayload(trimmed);
-
-            let matchedGuest = parsed.id
-                ? window.masterData.find(g => String(g.id).trim() === parsed.id)
-                : null;
+            let matchedGuest = parsed.id ? window.masterData.find(g => String(g.id).trim() === parsed.id) : null;
             if (!matchedGuest && parsed.email) {
                 matchedGuest = window.masterData.find(g => String(g.email || '').trim().toLowerCase() === parsed.email);
             }
@@ -523,77 +547,67 @@
             }
 
             displaySelectedUser(matchedGuest);
-
             if (qrDayCounts && qrDayCounts.adults === 0 && qrDayCounts.children === 0 && matchedGuest.isCheckedIn !== 'Y') {
                 $('#status-alert').removeClass('d-none alert-info alert-success alert-danger').addClass('alert-warning');
                 $('#data-status').html(`Note: QR code lists <strong>0 Adults, 0 Children</strong> for Day ${currentDayNumber}. Please confirm party size before checking in.`);
             }
         }
 
-async function startQrCamera() {
-    const $status = $('#qr-scanner-status');
-    $status.removeClass('alert-warning alert-danger alert-success').addClass('alert-info').text('Starting camera...');
+        async function startQrCamera() {
+            const $status = $('#qr-scanner-status');
+            $status.removeClass('alert-warning alert-danger alert-success').addClass('alert-info').text('Starting camera...');
 
-    if (typeof Html5Qrcode === 'undefined') {
-        $status.removeClass('alert-info').addClass('alert-danger')
-            .text('Error: html5-qrcode.min.js is not loaded. Ensure it is in the same repository folder as index.html.');
-        return;
-    }
-
-    try {
-        if (!html5QrCode) {
-            html5QrCode = new Html5Qrcode('qr-reader-div', {
-                experimentalFeatures: { useBarCodeDetectorIfSupported: true }
-            });
-        }
-
-        if (html5QrCode.isScanning) {
-            return;
-        }
-
-        // Prefer an explicit rear camera ID when available on multi-lens phones
-        let cameraConfig = { facingMode: 'environment' };
-        try {
-            const devices = await Html5Qrcode.getCameras();
-            const backCam = devices.find(d => /back|rear|environment/i.test(d.label));
-            if (backCam) {
-                cameraConfig = backCam.id;
+            if (typeof Html5Qrcode === 'undefined') {
+                $status.removeClass('alert-info').addClass('alert-danger')
+                    .text('Error: html5-qrcode.min.js is not loaded. Ensure it is in the same repository folder as index.html.');
+                return;
             }
-        } catch (e) {}
 
-        await html5QrCode.start(
-            cameraConfig,
-            {
-                fps: 20,
-                disableFlip: true,
-                videoConstraints: {
-                    facingMode: 'environment',
-                    width: { ideal: 1920 },
-                    height: { ideal: 1080 },
-                    advanced: [{ focusMode: 'continuous' }]
+            try {
+                if (!html5QrCode) {
+                    html5QrCode = new Html5Qrcode('qr-reader-div', { experimentalFeatures: { useBarCodeDetectorIfSupported: true } });
                 }
-            },
-            (decodedText) => {
-                $status.removeClass('alert-warning alert-danger alert-info').addClass('alert-success')
-                    .text('QR detected! Loading guest...');
-                handleQrScanResult(decodedText);
-            },
-            () => {}
-        );
+                if (html5QrCode.isScanning) { return; }
 
-        $status.text('Hold QR code 20-30cm from camera...');
-    } catch (err) {
-        const errName = (err && err.name) ? err.name : 'CameraError';
-        const errMsg = (err && err.message) ? err.message : String(err);
-        $status.removeClass('alert-info').addClass('alert-warning')
-            .text('Camera error (' + errName + ': ' + errMsg + '). Use the handheld scanner input below.');
-    }
-}
+                // Prefer an explicit rear camera ID when available on multi-lens phones
+                let cameraConfig = { facingMode: 'environment' };
+                try {
+                    const devices = await Html5Qrcode.getCameras();
+                    const backCam = devices.find(d => /back|rear|environment/i.test(d.label));
+                    if (backCam) { cameraConfig = backCam.id; }
+                } catch (e) {}
+
+                await html5QrCode.start(
+                    cameraConfig,
+                    {
+                        fps: 20,
+                        disableFlip: true,
+                        videoConstraints: {
+                            facingMode: 'environment',
+                            width: { ideal: 1920 },
+                            height: { ideal: 1080 },
+                            advanced: [{ focusMode: 'continuous' }]
+                        }
+                    },
+                    (decodedText) => {
+                        $status.removeClass('alert-warning alert-danger alert-info').addClass('alert-success')
+                            .text('QR detected! Loading guest...');
+                        handleQrScanResult(decodedText);
+                    },
+                    () => {}
+                );
+                $status.text('Hold QR code 20-30cm from camera...');
+            } catch (err) {
+                const errName = (err && err.name) ? err.name : 'CameraError';
+                const errMsg = (err && err.message) ? err.message : String(err);
+                $status.removeClass('alert-info').addClass('alert-warning')
+                    .text('Camera error (' + errName + ': ' + errMsg + '). Use the handheld scanner input below.');
+            }
+        }
+
         function stopQrCamera() {
             if (html5QrCode && html5QrCode.isScanning) {
-                html5QrCode.stop().then(() => {
-                    html5QrCode.clear();
-                }).catch(err => console.error(err));
+                html5QrCode.stop().then(() => { html5QrCode.clear(); }).catch(err => console.error(err));
             }
         }
 
@@ -642,7 +656,6 @@ async function startQrCamera() {
             $('#status-alert').addClass('d-none').removeClass('alert-success alert-danger alert-warning').addClass('alert-info');
             $('#data-status').html('');
             $('#check-in-btn').text(guest.isCheckedIn === 'Y' ? 'Update' : 'Add');
-
             if (!guest.numAdults || guest.numAdults <= 0) guest.numAdults = 1;
 
             $('#user-info').html(`
@@ -707,11 +720,9 @@ async function startQrCamera() {
                 numChildren: parseInt(guest.numChildren, 10) || 0,
                 checkInTime: new Date().toISOString()
             };
-
             guest.isCheckedIn = 'Y';
             guest.numAdults = payload.numAdults;
             guest.numChildren = payload.numChildren;
-
             window.pendingCheckins.push(payload);
             updatePendingCount();
 
@@ -728,7 +739,6 @@ async function startQrCamera() {
                 $form[0].reportValidity();
                 return;
             }
-
             const newGuest = {
                 id: 'newGuest',
                 fname: $('#new-fname').val().trim(),
@@ -741,7 +751,6 @@ async function startQrCamera() {
                 isCheckedIn: 'Y',
                 checkInTime: new Date().toISOString()
             };
-
             window.pendingCheckins.push(newGuest);
             window.masterData.push(newGuest);
             updatePendingCount();
@@ -755,7 +764,6 @@ async function startQrCamera() {
 
         async function batchUpdateAttendance() {
             if (window.pendingCheckins.length === 0) return;
-
             const batchData = [...window.pendingCheckins];
             window.pendingCheckins.length = 0;
             updatePendingCount();
@@ -794,28 +802,32 @@ async function startQrCamera() {
 
         $(function() {
             loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+            githubDayCountModal = new bootstrap.Modal(document.getElementById('githubDayCountModal'));
             const qrModalEl = document.getElementById('qrScannerModal');
             qrScannerModal = new bootstrap.Modal(qrModalEl);
 
             qrModalEl.addEventListener('shown.bs.modal', function() {
                 searchScanBuffer = '';
-                if (searchScanTimer) {
-                    clearTimeout(searchScanTimer);
-                    searchScanTimer = null;
-                }
+                if (searchScanTimer) { clearTimeout(searchScanTimer); searchScanTimer = null; }
                 $('#handheld-qr-input').val('').focus();
                 startQrCamera();
             });
             qrModalEl.addEventListener('hidden.bs.modal', function() {
-                if (handheldScanTimer) {
-                    clearTimeout(handheldScanTimer);
-                    handheldScanTimer = null;
-                }
+                if (handheldScanTimer) { clearTimeout(handheldScanTimer); handheldScanTimer = null; }
                 stopQrCamera();
             });
 
-            $('.day-card').on('click', function() {
-                selectDay($(this).data('day'));
+            $('.day-card').on('click', function() { selectDay($(this).data('day')); });
+
+            $('.count-link').on('click', function(e) {
+                e.preventDefault();
+                const day = parseInt($(this).data('day'), 10) || 1;
+                githubDayCountModal.show();
+                loadGithubDayCount(day);
+            });
+
+            $('#refresh-github-count-btn').on('click', function() {
+                loadGithubDayCount(activeCountDay);
             });
 
             $('#back-to-days-btn').on('click', function() {
@@ -829,14 +841,13 @@ async function startQrCamera() {
 
             $('#check-in-btn').on('click', checkInGuest);
             $('#new-registration-form').on('submit', submitNewRegistration);
+
             $('#clear-search-btn').on('click', function() {
                 searchScanBuffer = '';
-                if (searchScanTimer) {
-                    clearTimeout(searchScanTimer);
-                    searchScanTimer = null;
-                }
+                if (searchScanTimer) { clearTimeout(searchScanTimer); searchScanTimer = null; }
                 $('#guest-search').val('').autocomplete('close').focus();
             });
+
             $('#scan-qr-btn').on('click', function() {
                 if (!window.masterData || window.masterData.length === 0) {
                     $('#status-alert').removeClass('d-none alert-info alert-success alert-warning').addClass('alert-danger');
@@ -895,9 +906,7 @@ async function startQrCamera() {
 
             $('#handheld-qr-input').on('input paste', function() {
                 const $input = $(this);
-                if (handheldScanTimer) {
-                    clearTimeout(handheldScanTimer);
-                }
+                if (handheldScanTimer) { clearTimeout(handheldScanTimer); }
                 const currentVal = $input.val();
                 if (isQrPayloadComplete(currentVal)) {
                     flushHandheldQrInput();
