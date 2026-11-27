@@ -261,7 +261,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbxaTWiN6AebD9w3J5WBAT7de6lQNmNVx__hbdDfTBJVRDOFMsDR4XMbCA0_j2qcf6Bq5w/exec';
+        const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbwVX0hT-YKqZE10JY4stnqrqXUebq19hO3ZKcUHJiUztZwmqpKW1s34JQyK7n_1_kbLcg/exec';
         let currentDayNumber = 1;
         let activeCountDay = 1;
         window.masterData = [];
@@ -482,11 +482,11 @@
             }
 
             if (!email) {
-                const emailLabelMatch = text.match(/email\s*[:=]\s*([^\s,;]+@[^\s,;]+)/i);
+                const emailLabelMatch = text.match(/email\s*[:=]\s*([^\s,;]+@[^\s,;]+?)(?=\s*day\s*[123]\b|[\s,;]|$)/i);
                 if (emailLabelMatch) {
                     email = emailLabelMatch[1].trim();
                 } else {
-                    const genericEmailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+                    const genericEmailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}?(?=\s*day\s*[123]\b|[\s,;]|$)/i);
                     if (genericEmailMatch) {
                         email = genericEmailMatch[0].trim();
                     }
